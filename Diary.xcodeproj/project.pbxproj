@@ -20,6 +20,9 @@
 		8F2C3DF7294CCACD002B7AC2 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8F2C3DF6294CCACD002B7AC2 /* FirebaseFirestoreSwift */; };
 		8F2C3DFC294D7ED7002B7AC2 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2C3DFB294D7ED7002B7AC2 /* GridView.swift */; };
 		8F2C3DFE294D8BD7002B7AC2 /* AddDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2C3DFD294D8BD7002B7AC2 /* AddDiaryView.swift */; };
+		8FECA06A294DC082001923DB /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FECA069294DC082001923DB /* PhotoPickerView.swift */; };
+		8FECA06C294DC0D5001923DB /* PhotoPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FECA06B294DC0D5001923DB /* PhotoPickerModel.swift */; };
+		8FECA06E294DCA52001923DB /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8FECA06D294DCA52001923DB /* FirebaseStorage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,8 @@
 		8F2C3DF3294CC7FB002B7AC2 /* DiaryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryStore.swift; sourceTree = "<group>"; };
 		8F2C3DFB294D7ED7002B7AC2 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		8F2C3DFD294D8BD7002B7AC2 /* AddDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDiaryView.swift; sourceTree = "<group>"; };
+		8FECA069294DC082001923DB /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
+		8FECA06B294DC0D5001923DB /* PhotoPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +49,7 @@
 			files = (
 				8F2C3DF0294CC0C5002B7AC2 /* FirebaseFirestore in Frameworks */,
 				8F2C3DF7294CCACD002B7AC2 /* FirebaseFirestoreSwift in Frameworks */,
+				8FECA06E294DCA52001923DB /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				8F2C3DEC294CBF00002B7AC2 /* DiaryPage.swift */,
+				8FECA06B294DC0D5001923DB /* PhotoPickerModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -120,6 +127,7 @@
 				8F2C3DEA294CBEE5002B7AC2 /* DiaryView.swift */,
 				8F2C3DFB294D7ED7002B7AC2 /* GridView.swift */,
 				8F2C3DFD294D8BD7002B7AC2 /* AddDiaryView.swift */,
+				8FECA069294DC082001923DB /* PhotoPickerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -143,6 +151,7 @@
 			packageProductDependencies = (
 				8F2C3DEF294CC0C5002B7AC2 /* FirebaseFirestore */,
 				8F2C3DF6294CCACD002B7AC2 /* FirebaseFirestoreSwift */,
+				8FECA06D294DCA52001923DB /* FirebaseStorage */,
 			);
 			productName = Diary;
 			productReference = 8F2C3DD7294CBCB0002B7AC2 /* Diary.app */;
@@ -202,12 +211,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FECA06A294DC082001923DB /* PhotoPickerView.swift in Sources */,
 				8F2C3DE9294CBCDE002B7AC2 /* LoginView.swift in Sources */,
 				8F2C3DED294CBF00002B7AC2 /* DiaryPage.swift in Sources */,
 				8F2C3DFE294D8BD7002B7AC2 /* AddDiaryView.swift in Sources */,
 				8F2C3DDD294CBCB0002B7AC2 /* ContentView.swift in Sources */,
 				8F2C3DFC294D7ED7002B7AC2 /* GridView.swift in Sources */,
 				8F2C3DEB294CBEE5002B7AC2 /* DiaryView.swift in Sources */,
+				8FECA06C294DC0D5001923DB /* PhotoPickerModel.swift in Sources */,
 				8F2C3DDB294CBCB0002B7AC2 /* DiaryApp.swift in Sources */,
 				8F2C3DF4294CC7FB002B7AC2 /* DiaryStore.swift in Sources */,
 			);
@@ -430,6 +441,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8F2C3DEE294CC0C5002B7AC2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
+		};
+		8FECA06D294DCA52001923DB /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F2C3DEE294CC0C5002B7AC2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

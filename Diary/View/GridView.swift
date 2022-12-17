@@ -11,15 +11,15 @@ struct GridView: View {
     @EnvironmentObject var diaryStore: DiaryStore
     
     let columns = [
-        GridItem(.fixed(30)),
-        GridItem(.fixed(30)),
-        GridItem(.fixed(30)),
+        GridItem(.fixed(125)),
+        GridItem(.fixed(125)),
+        GridItem(.fixed(125)),
     ]
     
     var body: some View {
         LazyVGrid(columns: columns) {
             ForEach(diaryStore.diaryPages) { diaryPage in
-                if diaryPage.pictureURL == "" {
+                if diaryPage.imageURL == "" {
                     Image(systemName: "square.and.pencil")
                 }
             }

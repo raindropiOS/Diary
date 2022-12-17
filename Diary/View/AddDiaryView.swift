@@ -10,20 +10,19 @@ import SwiftUI
 struct AddDiaryView: View {
     @EnvironmentObject var diaryStore: DiaryStore
     @Environment(\.dismiss) private var dismiss
+    @StateObject var photoPickerModel: PhotoPickerModel = PhotoPickerModel()
+    @State var selectedImage: UIImage?
     @State var inputTitle: String = ""
     @State var inputContent: String = ""
+    @State private var imagePickerPresented = false
     
     var body: some View {
         Form {
             Section(header: Text("New Diary")) {
                 HStack {
                     Spacer()
-                    Image(systemName: "photo")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .foregroundColor(.gray)
-                        .frame(minWidth: 100, maxWidth: 200, minHeight: 100, maxHeight: 200)
-                        .padding(10)
+//                    PhotoPickerView(photoUploadModel: photoPickerModel, selectedImage: $selectedImage)
+                    ImagePicker(imagePickerVisible: $imagePickerPresented, selectedImage: $selectedImage)
                     Spacer()
                 }
                 DataInput(title: "Title", userInput: $inputTitle)
@@ -41,11 +40,21 @@ struct AddDiaryView: View {
     }
     
     func addNewDiary() {
+        
+        //selectedImage가 존재 시 Storage에 이미지 저장
+        if let _ = selectedImage {
+            diaryStore.uploadImage(image: selectedImage!) { URL in
+                
+            }
+        }
+
+        //현재 imageURL은 이미지를 storage애 저장후 diaryStore의 프라퍼티 imageURL에 저장되는 구조
+        let imageURL = diaryStore.imageURL
         let newDiaryPage = DiaryPage(
             id: UUID().uuidString,
             title: inputTitle,
             content: inputContent,
-            pictureURL: "",
+            imageURL: imageURL,
             date: Date.now.timeIntervalSince1970
         )
         

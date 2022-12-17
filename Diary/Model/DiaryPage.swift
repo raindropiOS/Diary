@@ -12,7 +12,7 @@ struct DiaryPage: Identifiable {
     var id: String
     var title: String
     var content: String
-    var pictureURL: String
+    var imageURL: String
     var date: Double
     
     var createdDate: String {
