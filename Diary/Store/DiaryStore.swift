@@ -11,7 +11,7 @@ import FirebaseFirestore
 class DiaryStore: ObservableObject {
     
     private let db = Firestore.firestore()
-    var ref: DocumentReference? = nil
+    //    var ref: DocumentReference? = nil
     @Published var diaryPages: [DiaryPage] = []
     
     init() {
@@ -19,18 +19,14 @@ class DiaryStore: ObservableObject {
     }
     
     func create(diary: DiaryPage) {
-        ref = db.collection("diary").addDocument(data: [
-            "title" : diary.title,
-            "content" : diary.content,
-            "pictureURL" : diary.pictureURL,
-            "date" : diary.date
-        ]) { err in
-            if let err = err {
-                print("Error adding document: \(err)")
-            } else {
-                print("Document added with ID: \(self.ref!.documentID)")
-            }
-        }
+        db.collection("diary")
+            .document(diary.id)
+            .setData([
+                "title" : diary.title,
+                "content" : diary.content,
+                "pictureURL" : diary.pictureURL,
+                "date" : diary.date
+            ])
     }
     
     func readData() {
@@ -64,11 +60,6 @@ class DiaryStore: ObservableObject {
     }
     
     func update(_ diaryPage: DiaryPage) {
-        let title = diaryPage.title
-        let content = diaryPage.content
-        let pictureURL = diaryPage.pictureURL
-        let date = diaryPage.date
-        
         db.collection("diary")
             .document(diaryPage.id)
             .updateData([

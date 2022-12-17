@@ -23,7 +23,7 @@ struct LoginView: View {
             Button(action: {
                 
             }, label: {
-                NavigationLink(destination: Text("temp")) {
+                NavigationLink(destination: DiaryView()) {
                     Text("Log-in")
                 }
             })

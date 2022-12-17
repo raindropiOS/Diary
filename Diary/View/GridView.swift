@@ -18,8 +18,10 @@ struct GridView: View {
     
     var body: some View {
         LazyVGrid(columns: columns) {
-            ForEach(diaryStore.diaryPages) { value in
-                
+            ForEach(diaryStore.diaryPages) { diaryPage in
+                if diaryPage.pictureURL == "" {
+                    Image(systemName: "square.and.pencil")
+                }
             }
         }
     }

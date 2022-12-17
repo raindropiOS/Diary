@@ -19,6 +19,7 @@
 		8F2C3DF4294CC7FB002B7AC2 /* DiaryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2C3DF3294CC7FB002B7AC2 /* DiaryStore.swift */; };
 		8F2C3DF7294CCACD002B7AC2 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8F2C3DF6294CCACD002B7AC2 /* FirebaseFirestoreSwift */; };
 		8F2C3DFC294D7ED7002B7AC2 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2C3DFB294D7ED7002B7AC2 /* GridView.swift */; };
+		8F2C3DFE294D8BD7002B7AC2 /* AddDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2C3DFD294D8BD7002B7AC2 /* AddDiaryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		8F2C3DF1294CC758002B7AC2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8F2C3DF3294CC7FB002B7AC2 /* DiaryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryStore.swift; sourceTree = "<group>"; };
 		8F2C3DFB294D7ED7002B7AC2 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		8F2C3DFD294D8BD7002B7AC2 /* AddDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDiaryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,11 +71,11 @@
 			isa = PBXGroup;
 			children = (
 				8F2C3DDA294CBCB0002B7AC2 /* DiaryApp.swift */,
+				8F2C3DF1294CC758002B7AC2 /* GoogleService-Info.plist */,
 				8F2C3DFA294D729D002B7AC2 /* View */,
 				8F2C3DF9294D7291002B7AC2 /* Store */,
 				8F2C3DF8294D7283002B7AC2 /* Model */,
 				8F2C3DDE294CBCB1002B7AC2 /* Assets.xcassets */,
-				8F2C3DF1294CC758002B7AC2 /* GoogleService-Info.plist */,
 				8F2C3DE0294CBCB1002B7AC2 /* Preview Content */,
 			);
 			path = Diary;
@@ -117,6 +119,7 @@
 				8F2C3DE8294CBCDE002B7AC2 /* LoginView.swift */,
 				8F2C3DEA294CBEE5002B7AC2 /* DiaryView.swift */,
 				8F2C3DFB294D7ED7002B7AC2 /* GridView.swift */,
+				8F2C3DFD294D8BD7002B7AC2 /* AddDiaryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			files = (
 				8F2C3DE9294CBCDE002B7AC2 /* LoginView.swift in Sources */,
 				8F2C3DED294CBF00002B7AC2 /* DiaryPage.swift in Sources */,
+				8F2C3DFE294D8BD7002B7AC2 /* AddDiaryView.swift in Sources */,
 				8F2C3DDD294CBCB0002B7AC2 /* ContentView.swift in Sources */,
 				8F2C3DFC294D7ED7002B7AC2 /* GridView.swift in Sources */,
 				8F2C3DEB294CBEE5002B7AC2 /* DiaryView.swift in Sources */,
