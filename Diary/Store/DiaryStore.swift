@@ -12,7 +12,7 @@ class DiaryStore: ObservableObject {
     
     private let db = Firestore.firestore()
     var ref: DocumentReference? = nil
-    @Published var diaryArticles: [DiaryPage] = []
+    @Published var diaryPages: [DiaryPage] = []
     
     init() {
         readData()
@@ -55,7 +55,7 @@ class DiaryStore: ObservableObject {
                         date: date
                     )
                     
-                    self.diaryArticles.append(diaryArticle)
+                    self.diaryPages.append(diaryArticle)
                     
                 }
                 print("read Diary Data")

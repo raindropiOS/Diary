@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DiaryPage {
+struct DiaryPage: Identifiable {
     
     var id: String
     var title: String
