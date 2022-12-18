@@ -32,9 +32,8 @@ struct GridView: View {
                         } else {
                             AsyncImage(url: URL(string: diaryPage.imageURL)) { image in
                                 image.resizable().frame(width:125, height: 125)
-                                
                             } placeholder: {
-                                Color.gray
+                                ProgressView()
                             }
 
                                 
