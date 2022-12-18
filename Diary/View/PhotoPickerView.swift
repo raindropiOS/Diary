@@ -11,43 +11,36 @@ import PhotosUI
 struct PhotoPickerView: View {
     @ObservedObject var photoUploadModel: PhotoPickerModel
     @Binding var selectedImage: UIImage?
+    @Binding var imagePickerPresented: Bool
     var imageState: PhotoPickerModel.ImageState {
         photoUploadModel.imageState
     }
     
     var body: some View {
         VStack {
-            switch imageState {
-            case .success(let image):
-                image.resizable()
-                    .frame(width: 200, height: 200)
-            case .loading:
-                ProgressView()
-            case .empty:
-                Image(systemName: "photo")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 200)
-                    .foregroundColor(.gray)
-            case .failure:
-                Image(systemName: "exclamationmark.triangle.fill")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 180)
-                    .foregroundColor(.gray)
+            if selectedImage == nil {
+                Button {
+                    imagePickerPresented.toggle()
+                } label: {
+                    Image(systemName: "photo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 200)
+                        .foregroundColor(.gray)
+                }
+            } else {
             }
+                
+
         }
-        .overlay(alignment: .bottomTrailing) {
-            PhotosPicker(selection: $photoUploadModel.imageSelection,
-                         matching: .images,
-                         photoLibrary: .shared()) {
-                Image(systemName: "pencil.circle.fill")
-                    .symbolRenderingMode(.multicolor)
-                    .font(.system(size: 40))
-                    .foregroundColor(.accentColor)
-            }
-            .buttonStyle(.borderless)
-        }
+        .sheet(isPresented: $imagePickerPresented, onDismiss: loadImage, content: {
+            ImagePicker(imagePickerVisible: $imagePickerPresented, selectedImage: $selectedImage) })
+        
+        
+    }
+    
+    func loadImage() {
+        guard let selectedImage = selectedImage else { return }
     }
 }
 
@@ -111,7 +104,9 @@ struct ImagePicker: UIViewControllerRepresentable {
 
 
 struct PhotoUploadView_Previews: PreviewProvider {
+    @State static var imagePickerPresented = false
+    @State static var selectedImage: UIImage? = nil
     static var previews: some View {
-        PhotoPickerView(photoUploadModel: PhotoPickerModel(), selectedImage: .constant(nil))
+        PhotoPickerView(photoUploadModel: PhotoPickerModel(), selectedImage: $selectedImage, imagePickerPresented: $imagePickerPresented)
     }
 }

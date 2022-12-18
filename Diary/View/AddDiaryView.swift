@@ -19,12 +19,34 @@ struct AddDiaryView: View {
     var body: some View {
         Form {
             Section(header: Text("New Diary")) {
-                HStack {
-                    Spacer()
-//                    PhotoPickerView(photoUploadModel: photoPickerModel, selectedImage: $selectedImage)
-                    ImagePicker(imagePickerVisible: $imagePickerPresented, selectedImage: $selectedImage)
-                    Spacer()
+                if selectedImage == nil {
+                    Button {
+                        imagePickerPresented.toggle()
+                    } label: {
+                        HStack {
+                            Spacer()
+                            Image(systemName: "photo")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 200)
+                                .foregroundColor(.gray)
+                            Spacer()
+                        }
+                    }
                 }
+                
+                if selectedImage != nil {
+                    HStack {
+                        Spacer()
+                        Image(uiImage: selectedImage!)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 200)
+                            .foregroundColor(.gray)
+                        Spacer()
+                    }
+                }
+                
                 DataInput(title: "Title", userInput: $inputTitle)
                 DataInput(title: "Content", userInput: $inputContent)
             }
@@ -37,28 +59,43 @@ struct AddDiaryView: View {
                 }
             }
         }
+        .sheet(isPresented: $imagePickerPresented, content: { ImagePicker(imagePickerVisible: $imagePickerPresented, selectedImage: $selectedImage) })
     }
     
+    
     func addNewDiary() {
-        
         //selectedImage가 존재 시 Storage에 이미지 저장
         if let _ = selectedImage {
             diaryStore.uploadImage(image: selectedImage!) { URL in
-                
+                if let imageURL = URL {
+                    print("diaryStore imageURL updated")
+                    diaryStore.imageURL = imageURL.absoluteString
+                }
+                let newDiaryPage = DiaryPage(
+                    id: UUID().uuidString,
+                    title: inputTitle,
+                    content: inputContent,
+                    imageURL: diaryStore.imageURL,
+                    date: Date.now.timeIntervalSince1970
+                )
+                diaryStore.create(diary: newDiaryPage)
             }
+        } else {
+            //selectedImage가 없을 때, imageURL은 ""로 저장
+            let newDiaryPage = DiaryPage(
+                id: UUID().uuidString,
+                title: inputTitle,
+                content: inputContent,
+                imageURL: diaryStore.imageURL,
+                date: Date.now.timeIntervalSince1970
+            )
+            diaryStore.create(diary: newDiaryPage)
         }
-
-        //현재 imageURL은 이미지를 storage애 저장후 diaryStore의 프라퍼티 imageURL에 저장되는 구조
-        let imageURL = diaryStore.imageURL
-        let newDiaryPage = DiaryPage(
-            id: UUID().uuidString,
-            title: inputTitle,
-            content: inputContent,
-            imageURL: imageURL,
-            date: Date.now.timeIntervalSince1970
-        )
         
-        diaryStore.create(diary: newDiaryPage)
+        
+        
+        //현재 imageURL은 이미지를 storage애 저장후 diaryStore의 프라퍼티 imageURL에 저장되는 구조
+       
         dismiss()
     }
 }
@@ -80,6 +117,7 @@ struct DataInput: View {
             TextField("Enter \(title)", text: $userInput)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
         }
-
+        
     }
 }
+

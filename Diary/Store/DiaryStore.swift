@@ -27,7 +27,7 @@ class DiaryStore: ObservableObject {
             .setData([
                 "title" : diary.title,
                 "content" : diary.content,
-                "pictureURL" : diary.imageURL,
+                "imageURL" : diary.imageURL,
                 "date" : diary.date
             ])
         
@@ -82,6 +82,7 @@ class DiaryStore: ObservableObject {
             .delete()
     }
     
+    
     //FireStorage
     func uploadImage(image: UIImage, completion: @escaping (URL?) -> Void) {
         let storage = Storage.storage()
@@ -106,6 +107,7 @@ class DiaryStore: ObservableObject {
                 return
             }
             
+            
             // Metadata contains file metadata such as size, content-type.
 //            let size = metadata.size
             // You can also access to download URL after upload.
@@ -113,11 +115,18 @@ class DiaryStore: ObservableObject {
                 guard let downloadURL = url else {
                     // Uh-oh, an error occurred!
                     print("could not get downloadURL")
+                    
                     return
                 }
-//                completion(downloadURL)
-                    self.imageURL = try! String(contentsOf: downloadURL)
+                
+                completion(downloadURL)
+//                    self.imageURL = try! String(contentsOf: downloadURL)
+               
+               
+                
+                
             }
         }
+        print("function upload images complete")
     }
 }
