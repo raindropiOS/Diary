@@ -4,7 +4,7 @@
 //
 //  Created by 박시현 on 2022/12/17.
 //
-
+// 현재 안쓰이는중?
 import SwiftUI
 import PhotosUI
 import CoreTransferable

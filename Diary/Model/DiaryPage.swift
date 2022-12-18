@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct DiaryPage: Identifiable {
     
@@ -25,4 +26,7 @@ struct DiaryPage: Identifiable {
 
             return dateFormatter.string(from: dateCreatedAt)
         }
+    
+    var image: Image?
+    
 }

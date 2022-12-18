@@ -14,7 +14,6 @@ struct DiaryView: View {
     var body: some View {
         GridView().environmentObject(diaryStore)
             .navigationTitle("My diary")
-            .onAppear(perform: readData)
         Spacer()
         Button {
             self.addDiaryViewIsPresented.toggle()
@@ -24,7 +23,6 @@ struct DiaryView: View {
         .sheet(isPresented: $addDiaryViewIsPresented) {
             AddDiaryView().environmentObject(diaryStore)
         }
-        
     }
     
     func readData() {
